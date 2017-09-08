@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myModule">
+<head>
+    <meta charset="utf-8">
+    <title>This is a test</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular-sanitize.js"></script>
+
+    <!-- ui-select files -->
+    <script src="../bower_components/angular-ui-select/dist/select.min.js"></script>
+    <link rel="stylesheet" href="../bower_components/angular-ui-select/dist/select.min.css">
+
+    <!-- Data Tables -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/fixedcolumns/3.2.2/css/fixedColumns.dataTables.min.css" rel="stylesheet">
+
+    <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/controller.js"></script>
+
+    <!-- themes -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css"> 
+
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="ng-cloak" ng-controller="DemoCtrl as ctrl" class="modal-demo">
+<script type="text/ng-template" id="myModalContent.html">
+        <div class="modal-header">
+            <h1 class="modal-title" id="modal-title">List of Characters</h1>
+        </div>
+        <div class="modal-body fortable" id="modal-body">
+          <div>
+            <ul>
+             <table id="supsTable" class="stripe row-border order-column fortable">
+                <thead>
+                    <tr>
+                        <th>Alias</th>
+                        <th>Real Name</th>
+                        <th>Afiliation</th>
+                        <th>Descriptión</th>
+                        <th>Blank</th>
+                        <th>Blank</th>    
+                        <th>Blank</th>
+                        <th>Blank</th>
+                        <th>Blank</th>
+                        <th>Blank</th>
+                        <th>Blank</th>
+                        <th>Blank</th>
+                        <th>Blank</th>
+                        <th>Blank</th>
+                    </tr>
+                </thead>
+            </table>
+            </ul>
+          </div>
+        </div>
+        <div class="modal-footer">
+        </div>
+</script>
+  <form class="form-horizontal">
+    <fieldset>
+      <legend>Let's Pick a Comic Editorial</legend>
+
+      <div class="form-group">
+        <label class="col-sm-3 control-label">Pick Valiant</label>
+        <div class="col-sm-6">
+
+          <ui-select ng-model="ctrl.editorial.selected" theme="bootstrap">
+            <ui-select-match placeholder="Select a Comic Editorial ">{{$select.selected.name}}</ui-select-match>
+            <ui-select-choices repeat="item in ctrl.editorial | filter: $select.search">
+              <span ng-bind-html="item.name | highlight: $select.search"></span>
+              <small ng-bind-html="item.email | highlight: $select.search"></small>
+            </ui-select-choices>
+          </ui-select>
+
+        </div>
+      </div>
+
+    </fieldset>
+  </form>
+</body>
+</html>
